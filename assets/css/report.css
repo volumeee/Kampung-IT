@@ -1,0 +1,631 @@
+html {
+    width: 21cm;
+    /* height: 29.7cm; */
+    border: 1px solid red;
+    margin: 0 auto;
+    font-size: 9pt;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+.tabel-nota {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-nota th {
+    text-align: center;
+    /* background-color: #d1d1d1; */
+}
+
+/* .table-nota tr {
+    border: 1.2pt dashed black !important;
+} */
+
+.border-left-none {
+    border-left: 1.2pt solid transparent !important;
+}
+
+.border-bottom-none {
+    border-bottom: 1.2pt solid transparent !important;
+}
+
+.border-top-none {
+    border-top: 1.2pt solid transparent !important;
+}
+
+.border-right-none {
+    border-right: 1.2pt solid transparent !important;
+}
+
+.border-right-none {
+    /* border: 1.2pt dashed black !important; */
+    /* width: 100%; */
+    border-right-color: none;
+    /* border-bottom-style: dashed; */
+    /* border-bottom-width: 1.2pt; */
+    /* height: 25px; */
+}
+
+.border-bottom {
+    /* border: 1.2pt dashed black !important; */
+    /* width: 100%; */
+    border-bottom-color: black;
+    border-bottom-style: dashed;
+    border-bottom-width: 1.2pt;
+    /* height: 25px; */
+}
+
+.border-right {
+    /* border: 1.2pt dashed black !important; */
+    /* width: 100%; */
+    border-right-color: black;
+    border-right-style: dashed;
+    border-right-width: 1.2pt;
+    /* height: 25px; */
+}
+
+.border-left {
+    /* border: 1.2pt dashed black !important; */
+    /* width: 100%; */
+    border-left-color: black;
+    border-left-style: dashed;
+    border-left-width: 1.2pt;
+    /* height: 25px; */
+}
+
+.border-top {
+    /* border: 1.2pt dashed black !important; */
+    width: 100%;
+    border-top-color: black;
+    border-top-style: dashed;
+    border-top-width: 1.2pt;
+    /* height: 25px; */
+}
+
+.border-top-bottom {
+    /* border: 1.2pt dashed black !important; */
+    width: 100%;
+    border-top-color: black;
+    border-top-style: dashed;
+    border-top-width: 1.2pt;
+    border-bottom-color: black;
+    border-bottom-style: dashed;
+    border-bottom-width: 1.2pt;
+    height: 20px;
+}
+
+/* .tabel-nota,
+.tabel-nota th,
+.tabel-nota td {
+    border: 1.2pt solid black;
+} */
+
+/* .tabel-nota th {
+    text-align: center;
+    background-color: #d1d1d1;
+} */
+
+.tabel-nota th {
+    padding: 6px 1px 6px;
+}
+
+.tabel-nota td {
+    padding: 2px 1px 2px;
+}
+
+.tabel-nota .kol-no {
+    width: 7%;
+}
+
+.tabel-nota .kol-obt {
+    width: 20%;
+}
+
+.tabel-nota .kol-harga {
+    width: 8%;
+}
+
+.tabel-nota .kol-exp {
+    width: 6%;
+}
+
+.tabel-nota .kol-unit {
+    width: 10%;
+}
+
+.tabel-nota .kol-subt {
+    width: 15%;
+}
+
+.tabel-nota .kol-fak {
+    width: 13%;
+}
+
+.tabel-nota .kol-tgl {
+    width: 13%;
+}
+
+.tabel-nota .kol-sup {
+    width: 30%;
+}
+
+.tabel-nota .kol-sta {
+    width: 13%;
+}
+
+.tabel-nota .kol-tot {
+    width: 22%;
+}
+
+.underline-tapak-asmo {
+    margin-top: 1px;
+    width: 100%;
+    border-bottom: 1.2pt solid black;
+}
+
+.justify-content-around {
+    -ms-flex-pack: distribute !important;
+    justify-content: space-around !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+button {
+    margin: 0;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #858796;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .35rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #1cc88a;
+    border-color: #1cc88a;
+}
+
+.page-break {
+    page-break-after: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -.75rem;
+    margin-left: -.75rem;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.text-italic {
+    font-style: italic !important;
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mt-1 {
+    margin-top: .25rem !important;
+}
+
+.mt-2 {
+    margin-top: .50rem !important;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: .25rem !important;
+}
+
+.mb-2 {
+    margin-bottom: .50rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.ml-1 {
+    margin-left: .25rem !important;
+}
+
+.ml-2 {
+    margin-left: .50rem !important;
+}
+
+.ml-3 {
+    margin-left: 1rem !important;
+}
+
+.mr-1 {
+    margin-right: .25rem !important;
+}
+
+.mr-2 {
+    margin-right: .50rem !important;
+}
+
+.mr-3 {
+    margin-right: 1rem !important;
+}
+
+.my-0 {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.my-1 {
+    margin-bottom: .25rem !important;
+    margin-top: .25rem !important;
+}
+
+.my-2 {
+    margin-bottom: .50rem !important;
+    margin-top: .50rem !important;
+}
+
+.my-3 {
+    margin-bottom: 1rem !important;
+    margin-top: 1rem !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-1 {
+    padding: .25rem !important;
+}
+
+.p-2 {
+    padding: .50rem !important;
+}
+
+.p-3 {
+    padding: 1rem !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.d-inline {
+    display: inline !important;
+}
+
+.tabel-judul {
+    width: 100%;
+}
+
+.tabel-judul td {
+    width: 50%;
+}
+
+.tabel-judul {
+    text-align: right;
+    padding-top: 5px;
+}
+
+.nama-apotek {
+    font-weight: bold;
+}
+
+.tabel-keterangan-laporan {
+    width: 100%;
+    font-weight: bold;
+    padding: 1pt;
+}
+
+.tabel-keterangan-laporan .nama-laporan {
+    font-size: 15px;
+}
+
+.tabel-keterangan-laporan .keterangan {
+    width: 20%;
+}
+
+.tabel-keterangan-laporan .isi-keterangan {
+    width: 80%;
+}
+
+.data-penjualan-detail {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-daftar-obat {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-daftar-obat,
+.tabel-daftar-obat td,
+.tabel-daftar-obat th {
+    border: 1.2pt solid black;
+}
+
+
+.tabel-daftar-obat,
+.tabel-data-penjualan-rangkuman {
+    width: 100%;
+    max-width: 100%;
+}
+
+.tabel-nopenjualan td,
+.tabel-nopenjualan th {
+    padding: 3px;
+}
+
+.tabel-daftar-obat td,
+.tabel-daftar-obat th {
+    padding: 2px;
+}
+
+.tabel-data-penjualan-rangkuman td,
+.tabel-data-penjualan-rangkuman th {
+    padding: 7px 3px;
+}
+
+.tabel-daftar-obat th,
+.tabel-pembelian-rangkuman th {
+    text-align: center;
+    background-color: #d1d1d1;
+}
+
+.tabel-daftar-obat .kol-nmobat {
+    width: 40%;
+    max-width: 40%;
+}
+
+.tabel-daftar-obat .kol-hrgjual {
+    width: 20%;
+    max-width: 20%;
+}
+
+.tabel-daftar-obat .kol-jmljual {
+    width: 10%;
+    max-width: 10%;
+}
+
+.tabel-daftar-obat .kol-satjual {
+    width: 10%;
+    max-width: 10%;
+}
+
+.tabel-daftar-obat .kol-subt {
+    width: 20%;
+    max-width: 20%;
+}
+
+.tabel-daftar-obat .kol-jmljual,
+.tabel-daftar-obat .kol-satjual {
+    text-align: center;
+}
+
+.tabel-daftar-obat td.kol-hrgjual,
+.tabel-daftar-obat td.kol-subt {
+    text-align: right;
+}
+
+.tabel-daftar-obat .total-pjl,
+.tabel-data-penjualan-rangkuman .total-pjl {
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.tabel-pembelian-rangkuman {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-pembelian-rangkuman,
+.tabel-pembelian-rangkuman th,
+.tabel-pembelian-rangkuman td {
+    border: 1.2pt solid black;
+}
+
+.tabel-pembelian-rangkuman th {
+    text-align: center;
+    background-color: #d1d1d1;
+}
+
+.tabel-pembelian-rangkuman th,
+.tabel-pembelian-rangkuman td {
+    padding: 2px;
+}
+
+.tabel-pembelian-rangkuman .kol-no {
+    width: 7%;
+}
+
+.tabel-pembelian-rangkuman .kol-fak {
+    width: 13%;
+}
+
+.tabel-pembelian-rangkuman .kol-tgl {
+    width: 13%;
+}
+
+.tabel-pembelian-rangkuman .kol-sup {
+    width: 30%;
+}
+
+.tabel-pembelian-rangkuman .kol-sta {
+    width: 13%;
+}
+
+.tabel-pembelian-rangkuman .kol-tot {
+    width: 22%;
+}
+
+.data-kosong {
+    border: 1px solid;
+    height: 90%;
+    font-size: 10pt;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.kol-tot-pembelian {
+    font-size: 10pt;
+    font-style: italic;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 700px) {
+    [class*="col-"] {
+        display: block;
+        clear: left;
+        width: 100%
+    }
+}
+
+@media print {
+    html {
+        border: none;
+    }
+
+    #btnBackReport {
+        display: none;
+    }
+
+    .tabel-pembelian-rangkuman th {
+        text-align: center;
+        background-color: #d1d1d1;
+    }
+
+    .kol-tot-pembelian {
+        font-size: 10pt;
+        font-style: italic;
+        font-weight: bold;
+        background-color: #f2f2f2;
+    }
+}
