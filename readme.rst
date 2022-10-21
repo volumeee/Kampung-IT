@@ -1,3 +1,8 @@
+db name => kampung_it
+
+username & password 
+admin admin; user user 
+
 ###################
 What is CodeIgniter
 ###################
