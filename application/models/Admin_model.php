@@ -60,9 +60,8 @@ class Admin_model extends CI_Model
 
     public function showListArtikel()
     {
-        $this->db->select('artikel.artikel_id, artikel.link, artikel.judul, artikel.banner, artikel.tgl_upload, artikel.dilihat, user.name');
+        $this->db->select('artikel.artikel_id, artikel.link, artikel.judul, artikel.banner, artikel.tgl_upload, artikel.dilihat');
         $this->db->from('artikel');
-        $this->db->join('user', 'user.email = artikel.user_email');
         $this->db->order_by('artikel.tgl_upload', 'DESC');
         return $this->db->get()->result_array();
     }

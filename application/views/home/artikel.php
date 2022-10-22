@@ -3,7 +3,7 @@
         <div class="h4 font-weight-bold text-center mb-4 text-primary">ARTIKEL</div>
         <div class="row justify-content-center">
             <?php foreach ($artikel as $art) : ?>
-                <div class="col-lg-4 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12 mb-3">
                     <div class="card h-100 rounded-4 border-0 shadow overflow-hidden">
                         <div class="img-container">
                             <img src="<?= base_url(); ?>assets/img/artikel/<?= $art['banner']; ?>" class="img-thumbnail" alt="<?= $art['judul']; ?>">
