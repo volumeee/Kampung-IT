@@ -10,7 +10,7 @@
                             <?php if (count($kategori) == 0) : ?>
                                 <li>Tidak ada data.</li>
                                 <?php else :  foreach ($kategori as $k) : ?>
-                                    <li><a href="<?= base_url() . $k['kategori']; ?>"><?= $k['kategori']; ?></a></li>
+                                    <li><a href="<?= base_url('home/search/') . $k['kategori']; ?>"><?= $k['kategori']; ?></a></li>
                             <?php endforeach;
                             endif; ?>
                         </ul>
@@ -52,7 +52,7 @@
         </div>
         <div class="row mt-4">
             <?php foreach ($products as $p) : ?>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                <div class="col-xl-3 col-lg-4 col-md-4 col-12 mb-3">
                     <div class="single-product">
                         <div class="product-img">
                             <a href="<?= base_url('home/product/') . $p['post_id']; ?>">

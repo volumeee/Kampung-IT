@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                     <?php foreach ($results as $p) : ?>
-                        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-12 mb-3">
                             <div class="single-product">
                                 <div class="product-img">
                                     <a href="<?= base_url('home/product/') . $p['post_id']; ?>">
