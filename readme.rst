@@ -1,8 +1,8 @@
 db name => kampung_it
 
 username & password 
-admin : Admin => role as Administrator
-merchant : merchant as user penyedia jasa
+1) admin : admin => as Administrator
+2) merchant : merchant => as user penyedia jasa
 
 ###################
 What is CodeIgniter
