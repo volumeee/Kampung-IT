@@ -98,7 +98,7 @@
                                                 <form class="mb-3" method="post" action="<?= base_url('home/savereview'); ?>">
                                                     <div class="form-group">
                                                         <label>Your Review</label>
-                                                        <textarea cols="4" class="form-control" name="user_review"><?= $reviewByUser['user_review']; ?></textarea>
+                                                        <textarea cols="4" class="form-control" name="user_review"></textarea>
                                                     </div>
                                                     <input type="hidden" name="post_id" value="<?= $product['post_id']; ?>">
                                                     <button type="submit" class="btn btn-primary">Submit</button>
