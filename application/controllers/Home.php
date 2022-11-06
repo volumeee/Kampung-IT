@@ -75,8 +75,13 @@ class Home extends CI_Controller
             $data['product'] = $this->home->detailProduct($post_id);
             if (!$data['product']) redirect('notfound');
             else {
+                // equipment
                 $data['title'] = $data['product']['judul'] . ' - Kampung IT';
                 $data['identitas'] = $this->db->get('identitas')->row_array();
+                // review by user
+                $data['reviewByUser'] = $this->db->select('user_review')->get_where('review', ['post_id' => $post_id, 'email' => $this->session->userdata('email')])->row_array();
+                // review
+                $data['review'] = $this->db->select('review.email, review.user_review, review.datetime, user.name, user.image')->join('user', 'review.email = user.email')->get_where('review', ['review.post_id' => $post_id, 'review.email !=' => $this->session->userdata('email')], 5)->result_array();
                 // other products
                 $data['others'] = $this->home->otherProductsList($post_id);
                 $this->db->select()->get_where('post', ['post_id !=' => $post_id], 4)->result_array();
@@ -126,5 +131,19 @@ class Home extends CI_Controller
     public function searchNav()
     {
         redirect('home/search/' . $this->input->post('search'));
+    }
+
+    public function saveReview()
+    {
+        $post_id = $this->input->post('post_id');
+        $user_review = htmlspecialchars($this->input->post('user_review'));
+        if ($this->db->insert('review', [
+            'email' => $this->session->userdata('email'),
+            'post_id' => $post_id,
+            'user_review' => $user_review,
+            'datetime' => date('Y-m-d H:i:s', time())
+        ])) $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Review Anda berhasil disimpan, terima kasih.</div>');
+        else $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Opps! Mohon maaf, review Anda gagal disimpan silakan untuk mencoba lagi.</div>');
+        redirect('home/product/' . $post_id);
     }
 }

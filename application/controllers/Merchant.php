@@ -122,16 +122,57 @@ class Merchant extends CI_Controller
         redirect('merchant/posting');
     }
 
-    public function chat()
+    public function chat($email = NULL)
     {
         $data['title'] = 'Chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['identitas'] = $this->db->get('identitas')->row_array();
+        $this->load->model('Merchant_model', 'merchant');
+        if ($email == null) {
+            $data['chats'] = $this->merchant->getChats($this->session->userdata('email'));
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('merchant/chats', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data['userChatting'] = $this->db->select('name, email')->get_where('user', ['email' => urldecode($email)])->row_array();
+            $data['merchant'] = $this->db->select('merchant_id')->get_where('merchant', ['email' => $this->session->userdata('email')])->row_array();
+            $data['chat'] = $this->merchant->getChat(urldecode($email), $this->session->userdata('email'));
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('merchant/chat-room', $data);
+            $this->load->view('templates/footer');
+        }
+    }
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('templates/body-kosong');
-        $this->load->view('templates/footer');
+    public function sendChat()
+    {
+        $pesan = htmlspecialchars($this->input->post('pesan'));
+        $from = $this->input->post('sender_id');
+        $to = $this->input->post('receiver_id');
+        $datetime = date('Y-m-d H:i:s', time());
+        $this->db->insert(
+            'chat',
+            [
+                'sender_id' => $from,
+                'receiver_id' => $to,
+                'text' => $pesan,
+                'status' => 0,
+                'identify' => $to,
+                'datetime' => $datetime
+            ]
+        );
+        redirect('merchant/chat/' . urlencode($from));
+    }
+
+    public function deleteChat($sender_id)
+    {
+        $hasMerchant = $this->db->select('merchant_id')->get_where('merchant', ['email' => $this->session->userdata('email')])->row_array();
+        $this->db->where(['sender_id' => $sender_id, 'receiver_id' => $hasMerchant['merchant_id']]);
+        $this->db->delete('chat');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Chat has been deleted.</div>');
+        redirect('merchant/chat');
     }
 }

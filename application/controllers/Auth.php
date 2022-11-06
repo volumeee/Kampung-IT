@@ -152,13 +152,13 @@ class Auth extends CI_Controller
             $this->email->from('kampungit.offc@gmail.com', 'Kampung IT Aktivasi Akun - ' . $token);
             $this->email->to($email);
             $this->email->subject('Account Verification');
-            $this->email->message('Masukkan kode di bawah ini untuk melakukan aktivasi akun Anda, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<center><h1>' . $token . '</h1>©InfaqOnline One-Time Code</center>');
+            $this->email->message('Masukkan kode di bawah ini untuk melakukan aktivasi akun Anda, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<left><h1>' . $token . '</h1>©2022 Kampung IT One-Time Code</left>');
             $this->session->set_userdata('verify_email', $email);
         } else if ($type == 'forgot') {
             $this->email->from('kampungit.offc@gmail.com', 'Kampung IT Lupa Password - ' . $token);
             $this->email->to($email);
             $this->email->subject('Reset Password');
-            $this->email->message('Masukkan kode di bawah ini untuk melakukan reset password akun Anda, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<center><h1>' . $token . '</h1>©InfaqOnline One-Time Code</center>');
+            $this->email->message('Masukkan kode di bawah ini untuk melakukan reset password akun Anda, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<left><h1>' . $token . '</h1>©Kampung IT One-Time Code</left>');
             $this->session->set_userdata('forgot_password', $email);
         }
         // jika terjadi error saat kirim

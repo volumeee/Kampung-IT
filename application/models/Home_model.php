@@ -10,7 +10,7 @@ class Home_model extends CI_Model
 
     public function detailProduct($post_id)
     {
-        return $this->db->select('post.post_id, post.judul, post.banner, post.tarif, post.dilihat, post.text, merchant.alamat, merchant.nama_usaha, user.image, kategori.kategori')->join('merchant', 'post.email = merchant.email')->join('user', 'post.email = user.email')->join('kategori', 'merchant.kategori = kategori.kategori_id')->get_where('post', ['post.post_id' => $post_id])->row_array();
+        return $this->db->select('post.post_id, post.judul, post.banner, post.tarif, post.dilihat, post.text, merchant.merchant_id, merchant.alamat, merchant.nama_usaha, user.image, kategori.kategori')->join('merchant', 'post.email = merchant.email')->join('user', 'post.email = user.email')->join('kategori', 'merchant.kategori = kategori.kategori_id')->get_where('post', ['post.post_id' => $post_id])->row_array();
     }
 
     public function otherProductsList($post_id)

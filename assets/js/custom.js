@@ -259,3 +259,19 @@ $(document).on('click', '#editProgram', function () {
 $(document).on('click', '#delProgram', function () {
     $('#cDelProgram').attr('href', $(this).data('href'));
 });
+
+// member/historyRate editReview
+$(document).on('click', '#editReview', function () {
+    $('#editReviewModalLabel').html($(this).data('judul'))
+    $('#inputIdReview').val($(this).data('reviewid'));
+    $('#inputEditReview').html($(this).data('review'));
+});
+
+// admin/inbox showInbox
+$(document).on('click', '#showInbox', function () {
+    $('#showInboxModalLabel').html($(this).data('inboxid'))
+    $('#namaInbox').html($(this).data('nama'));
+    $('#emailInbox').html($(this).data('email'));
+    $('#waktuInbox').html($(this).data('datetime'));
+    $('#pesanInbox').html($(this).data('pesan'));
+});

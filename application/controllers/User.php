@@ -17,7 +17,7 @@ class User extends CI_Controller
         $this->load->model('User_model', 'user');
         $data['kategori'] = $this->db->get('kategori')->result_array();
         $data['merchant'] = $this->db->get_where('merchant', ['email' => $this->session->userdata('email')])->row_array();
-        
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -142,12 +142,14 @@ class User extends CI_Controller
 
     public function openMerchant()
     {
+        $this->load->model('Admin_model', 'admin');
         $nama_usaha = htmlspecialchars($this->input->post('nama_usaha'));
         $email = $this->session->userdata('email');
         $kategori = htmlspecialchars($this->input->post('kategori'));
         $alamat = htmlspecialchars($this->input->post('alamat'));
         $deskripsi = htmlspecialchars($this->input->post('deskripsi'));
         if ($this->db->insert('merchant', [
+            'merchant_id' => $this->admin->autoId('merchant', 'merchant_id', 'MRC'),
             'nama_usaha' => $nama_usaha,
             'email' => $email,
             'kategori' => $kategori,
@@ -204,7 +206,7 @@ class User extends CI_Controller
         $this->email->from('kampungit.offc@gmail.com', 'Kampung IT Aktivasi Merchant - ' . $token);
         $this->email->to($email);
         $this->email->subject('Merchant Verification');
-        $this->email->message('Masukkan kode di bawah ini untuk melakukan aktivasi sebagai penyedia jasa dengan nama usaha <strong>' . $nama_usaha . '</strong>, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<center><h1>' . $token . '</h1>© Kampung IT One-Time Code</center>');
+        $this->email->message('Masukkan kode di bawah ini untuk melakukan aktivasi sebagai penyedia jasa dengan nama usaha <strong>' . $nama_usaha . '</strong>, kode hanya berlaku satu jam setelah diterbitkan. Apabila Anda tidak melakukan aktivitas ini, maka abaikan E-mail ini.<left><h1>' . $token . '</h1>©2022 Kampung IT One-Time Code</left>');
         // jika terjadi error saat kirim
         if ($this->email->send()) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Silakan buka email <strong>**' . substr($email, 2, 12) . '**</strong> yang berisi kode untuk aktivasi merchant, terima kasih.</div>');

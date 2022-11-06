@@ -52,5 +52,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = 'notfound';
 $route['translate_uri_dashes'] = FALSE;
+// untuk inbox
+$route['admin/inbox/(:any)'] = 'admin/inbox/$1';
 // untuk artikel
 $route['home/artikel/(:any)'] = 'home/artikel/$1';
+// untuk member melihat user yang dichat
+$route['member/chat/(:any)'] = 'member/chat/$1';
+// untuk merchant melihat user yang dichat
+$route['merchant/chat/(:any)'] = 'merchant/chat/$1';

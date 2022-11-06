@@ -453,8 +453,6 @@ class Admin extends CI_Controller
         redirect('admin/program');
     }
 
-
-
     public function downloadBackupDb()
     {
         $this->load->dbutil();
@@ -505,16 +503,75 @@ class Admin extends CI_Controller
         redirect('admin/settings');
     }
 
-    public function inbox()
+    public function inbox($inbox_id = NULL)
     {
         $data['title'] = 'Inbox';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['identitas'] = $this->db->get('identitas')->row_array();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('templates/body-kosong', $data);
-        $this->load->view('templates/footer');
+        if ($inbox_id == NULL) {
+            $data['inboxs'] = $this->db->get('inbox')->result_array();
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/inbox', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data['inbox'] = $this->db->get('inbox', ['inbox_id' => $inbox_id])->row_array();
+            if (!$data['inbox']) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ID Inbox tidak ditemukan, mungkin sudah dihapus atau tidak terdaftar.</div>');
+                redirect('admin/inbox');
+            } else {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('admin/inbox-reply', $data);
+                $this->load->view('templates/footer');
+            }
+        }
+    }
+
+    public function deleteInbox($inbox_id)
+    {
+        $this->db->where('inbox_id', $inbox_id);
+        $this->db->delete('inbox');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Inbox has been deleted.</div>');
+        redirect('admin/inbox');
+    }
+
+    public function inboxReply()
+    {
+        $balasan = $this->input->post('balas_pesan');
+        $email = $this->input->post('email');
+        $pesan_singkat = $this->input->post('pesan_singkat');
+        $waktu = $this->input->post('waktu');
+        $inbox_id = $this->input->post('inbox_id');
+        $config = [
+            'protocol'  => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_user' => 'kampungit.offc@gmail.com',
+            'smtp_pass' => 'unmjwvjwzseknbtl',
+            'smtp_port' => 465,
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'newline'   => "\r\n"
+        ];
+        // panggi library
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+        // kirim email
+        $this->email->from('kampungit.offc@gmail.com', 'Kampung IT - Reply ' . $inbox_id);
+        $this->email->to($email);
+        $this->email->subject('Reply Kampung IT');
+        $this->email->message('Re : ' . $pesan_singkat . '... Waktu : ' . $waktu . '.<br>' . $balasan . '<left>©2022 Kampung IT</left>');
+        // jika terjadi error saat kirim
+        if ($this->email->send()) {
+            // set status jadi 1
+            $this->db->update('inbox', ['status' => 1], ['inbox_id' => $inbox_id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil mengirim balasan email.</div>');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Maaf, gagal dalam mengirim balasan email, coba ulangi nanti.</div>');
+        }
+        redirect('admin/inbox');
     }
 }
