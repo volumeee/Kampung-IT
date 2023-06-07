@@ -28,7 +28,7 @@ class Merchant extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('merchant/index');
+            $this->load->view('merchant/index', $data);
             $this->load->view('templates/footer');
         } else {
             $nama_usaha = htmlspecialchars($this->input->post('nama_usaha'));
